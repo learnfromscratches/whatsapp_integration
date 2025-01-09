@@ -1,13 +1,9 @@
-// src/app.js
-require("dotenv").config();
-const fastify = require("fastify")({ logger: false });
-const orderRoutes = require("./src/routes/orderRoutes");
-const webhookRoutes = require("./src/routes/webhookRoutes");
+const fastify = require('fastify')({ logger: true });
 
-fastify.register(orderRoutes);
-fastify.register(webhookRoutes);
+// Use the PORT environment variable or default to 3000
+const PORT = process.env.PORT || 3000;
 
-fastify.listen({ port: process.env.PORT || 4000 }, (err, address) => {
+fastify.listen({ port: PORT, host: '0.0.0.0' }, (err, address) => {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
