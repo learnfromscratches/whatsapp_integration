@@ -7,7 +7,7 @@ const webhookRoutes = require("./src/routes/webhookRoutes");
 fastify.register(orderRoutes);
 fastify.register(webhookRoutes);
 
-fastify.listen({ port: process.env.PORT }, (err, address) => {
+fastify.listen({ port: process.env.PORT || 4000 }, (err, address) => {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
